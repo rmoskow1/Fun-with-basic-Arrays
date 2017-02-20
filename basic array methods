@@ -1,0 +1,24 @@
+"""we have a basic array - a list structure, using a list __a as the storage, __nElems containing item amount"""
+#count the number of occurences of an item
+def countGE(self,item):
+         theCount = 0
+         for idx in range(self.__nElems): #loops through all elements in the array
+            if self.__a[idx] >= item:  #adds to a count if an element is >= item
+               theCount = theCount+1
+
+         return theCount
+#modifies an instance of type Array so there are no duplicates (everthing else remains the same)
+   def purgeDups(self):
+      tempList = [None]*len(self.__a) #creates a temporary list same length as the original array
+      numTempList = 0 # variable for elements in the new list
+      for idx in range(self.__nElems):
+         if self.__a[idx] != None:
+            tempList[numTempList] = self.__a[idx] #set next index of tempList to this new value in __a
+            for j in range(idx+1,self.__nElems): #get rid of all other occurances of that element by looping through to find it again
+               if self.__a[idx] == self.__a[j]:
+                  self.__a[j] = None
+
+            numTempList = numTempList + 1
+
+      self.__a = tempList #replace old list and old number of elements
+      self.__nElems = numTempLis
